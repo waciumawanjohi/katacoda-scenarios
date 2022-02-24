@@ -1,4 +1,4 @@
-# Manually create a supply chain
+# Getting source code into your cluster
 
 We'll first manually create a set of kubernetes resources that will go from code to running app in the cluster.
 
@@ -6,9 +6,7 @@ We'll first manually create a set of kubernetes resources that will go from code
 - a kpack image to turn that code into an OCI image
 - a deployment to actually run that image on nodes in the cluster
 
-## GitRepository: Getting source code into your cluster
-
-### Define the object
+# Define the object
 
 First let's create a file defining our object.
 
@@ -40,20 +38,21 @@ main
 https://github.com/kontinue/hello-world
 </pre>
 
-### Apply the object
+# Apply the object
 
 Let's create the object in the repo:
 
 `kubectl apply -f example/manual-git-repo.yaml`{{execute}}
 
-### Observe the object
+# Observe the object
 
 The controller for the GitRepository resource is now reconciling the object. We want to get the status of the object
 once that reconciliation is done.
 
 `kubectl get gitrepository manual-git-repo -o yaml`{{execute}}
 
-Once we observe that the status includes the following, we'll know that the controller has completed its work:
+Once we observe that the status includes the following, we'll know that the controller has completed its work.
+If you don't see a status on the object, wait a few moments and rerun the kubectl get:
 
 ```yaml
   conditions:

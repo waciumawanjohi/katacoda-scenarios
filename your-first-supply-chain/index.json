@@ -1,16 +1,16 @@
 {
-  "title": "Your First Cartographer Supply Chain: rev 6",
+  "title": "Your First Cartographer Supply Chain: rev 7",
   "description": "Create a path to production for multiple apps",
   "difficulty": "Beginner",
   "time": "10 minutes",
   "details": {
     "steps": [
       {
-        "title": "Step 1",
+        "title": "Manual Supply Chain: Step 1",
         "text": "step1.md"
       },
       {
-        "title": "Step 2",
+        "title": "Manual Supply Chain: Step 2",
         "text": "step2.md"
       },
       {
