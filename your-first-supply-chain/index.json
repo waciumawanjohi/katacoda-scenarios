@@ -1,5 +1,5 @@
 {
-  "title": "Your First Cartographer Supply Chain: rev 3",
+  "title": "Your First Cartographer Supply Chain: rev 4",
   "description": "Create a path to production for multiple apps",
   "difficulty": "Beginner",
   "time": "10 minutes",
@@ -28,8 +28,8 @@
     }
   },
   "environment": {
-    "uilayout": "terminal",
-    "showide": true
+    "uilayout": "editor-terminal",
+    "uieditorpath": "/root/example"
   },
   "backend": {
     "imageid": "kubernetes-cluster-running:1.18"
