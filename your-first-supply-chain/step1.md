@@ -44,14 +44,14 @@ https://github.com/kontinue/hello-world
 
 Let's create the object in the repo:
 
-`kubectl apply -f manual-git-repo.yaml`{{execute}}
+`kubectl apply -f example/manual-git-repo.yaml`{{execute}}
 
 ### Observe the object
 
 The controller for the GitRepository resource is now reconciling the object. We want to get the status of the object
 once that reconciliation is done.
 
-`kubectl get gitrepository manual-git-repo`{{execute}}
+`kubectl get gitrepository manual-git-repo -o yaml`{{execute}}
 
 Once we observe that the status includes the following, we'll know that the controller has completed its work:
 
@@ -65,8 +65,8 @@ Once we observe that the status includes the following, we'll know that the cont
 ```
 
 The gitrepository is now exposing the most recent code on the specified branch to any resource in the cluster.
-Let's copy that value to our clipboard:
+Execute the following command to get the value. Copy the value, we'll use it in just a moment:
 
-`kubectl get gitrepository manual-git-repo | yq .status.artifact.url | pbcopy`{{execute}}
+`kubectl get gitrepository manual-git-repo -o yaml | yq .status.artifact.url`{{execute}}
 
 Now we're ready for another kubernetes tool to turn this code into an OCI image!
