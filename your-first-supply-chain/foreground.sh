@@ -30,11 +30,7 @@ install_source_controller() {
 }
 
 install_kpack() {
-        ytt --ignore-unknown-comments \
-                -f "overlays/remove-resource-requests-from-deployments.yaml" \
-                -f https://github.com/pivotal/kpack/releases/download/v$KPACK_VERSION/release-$KPACK_VERSION.yaml |
-                kapp deploy --yes -a kpack -f-
-
+  kubectl apply -f https://github.com/pivotal/kpack/releases/download/v$KPACK_VERSION/release-$KPACK_VERSION.yaml
 }
 
 main
