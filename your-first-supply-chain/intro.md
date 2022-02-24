@@ -14,18 +14,15 @@ You will see how this Supply Chain can be used to create an application platform
 
 ## Prerequisite Skills
 
-This tutorial is for engineers familiar with kubernetes. We will use 3 kubernetes resources
+This tutorial is for engineers familiar with kubernetes. We will use 3 kubernetes resources (learners do not need to
+have any prior experience with these resources)
 
-- fluxcd GitRepositories
-- kpack Images
-- Deployments
+- [fluxcd GitRepositories](https://fluxcd.io/docs/components/source/gitrepositories/)
+- [kpack Images](https://github.com/pivotal/kpack/blob/main/docs/tutorial.md)
+- [Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
 ## Table of Contents
 
-If the scenario is part of a set of related scenarios, the table of contents will appear here as a bulleted list of all the scenario titles, with links to each other.
+This is the first of a set of scenarios to learn how to create a product platform using Cartographer.
 
-- Scenario A
-- Scenario B
-- Scenario C
-
-
+- Your First Supply Chain
