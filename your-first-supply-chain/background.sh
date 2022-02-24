@@ -5,6 +5,7 @@ readonly SOURCE_CONTROLLER_VERSION=0.17.0
 main () {
   install_ytt
   install_kapp
+  launch.sh
   install_source_controller
 }
 
