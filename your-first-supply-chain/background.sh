@@ -2,9 +2,11 @@
 
 readonly SOURCE_CONTROLLER_VERSION=0.17.0
 
-install_ytt
-install_kapp
-install_source_controller
+main () {
+  install_ytt
+  install_kapp
+  install_source_controller
+}
 
 install_ytt () {
   wget -O- https://carvel.dev/install.sh > install_ytt.sh
@@ -28,3 +30,5 @@ install_source_controller() {
                         -f https://github.com/fluxcd/source-controller/releases/download/v$SOURCE_CONTROLLER_VERSION/source-controller.deployment.yaml |
                         kapp deploy --yes -a gitops-toolkit --into-ns gitops-toolkit -f-
 }
+
+main
