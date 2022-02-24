@@ -21,9 +21,9 @@ spec:
   gitImplementation: libgit2
   ignore: ""
   interval: 1m0s
+  timeout: 20s
   ref:
     branch: #TODO-set-branch
-  timeout: 20s
   url: #TODO-set-repo-url
 </pre>
 
