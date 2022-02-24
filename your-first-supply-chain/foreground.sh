@@ -1,16 +1,40 @@
 #/bin/bash
 
+readonly KPACK_VERSION=0.5.1
+readonly SOURCE_CONTROLLER_VERSION=0.17.0
+
 main () {
   launch.sh
-  install_carto_dependencies
+  get_overlays
+  install_source_controller
+  install_kpack
 }
 
-install_carto_dependencies() {
-  mkdir -p "hack/overlays"
-  wget -O- https://raw.githubusercontent.com/vmware-tanzu/cartographer/main/hack/overlays/remove-resource-requests-from-deployments.yaml > hack/overlays/remove-resource-requests-from-deployments.yaml
-  wget -O- https://raw.githubusercontent.com/vmware-tanzu/cartographer/waciuma/demo/hack/setup.sh > hack/setup.sh
-  chmod +x hack/setup.sh
-  ./hack/setup.sh example-dependencies
+get_overlays() {
+  mkdir -p "overlays"
+  wget -O- https://raw.githubusercontent.com/vmware-tanzu/cartographer/main/hack/overlays/remove-resource-requests-from-deployments.yaml > overlays/remove-resource-requests-from-deployments.yaml
+}
+
+install_source_controller() {
+        kubectl create namespace gitops-toolkit || true
+
+        kubectl create clusterrolebinding gitops-toolkit-admin \
+                --clusterrole=cluster-admin \
+                --serviceaccount=gitops-toolkit:default || true
+
+        ytt --ignore-unknown-comments \
+                -f "overlays/remove-resource-requests-from-deployments.yaml" \
+                -f https://github.com/fluxcd/source-controller/releases/download/v$SOURCE_CONTROLLER_VERSION/source-controller.crds.yaml \
+                -f https://github.com/fluxcd/source-controller/releases/download/v$SOURCE_CONTROLLER_VERSION/source-controller.deployment.yaml |
+                kapp deploy --yes -a gitops-toolkit --into-ns gitops-toolkit -f-
+}
+
+install_kpack() {
+        ytt --ignore-unknown-comments \
+                -f "overlays/remove-resource-requests-from-deployments.yaml" \
+                -f https://github.com/pivotal/kpack/releases/download/v$KPACK_VERSION/release-$KPACK_VERSION.yaml |
+                kapp deploy --yes -a kpack -f-
+
 }
 
 main
