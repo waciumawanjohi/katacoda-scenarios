@@ -28,6 +28,7 @@
     }
   },
   "environment": {
+    "uilayout": "terminal",
     "showide": true
   },
   "backend": {
