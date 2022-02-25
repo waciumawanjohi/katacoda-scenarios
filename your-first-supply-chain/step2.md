@@ -1,12 +1,20 @@
 # Building an image
 
-Now the your source code is available in your cluster (at that path that you copied in the last step) we can
-use the cloud native buildpacks to create an image. A full run down of cloud native buildpacks and kpack is
-outside the scope of this tutorial, we'll simply use this powerful tool in the creation of our supply chain.
+Now that your source code is available in your cluster (at that path that you
+copied in the last step) we can use the cloud native buildpacks to create an
+image. A full run down of cloud native buildpacks and kpack is outside the
+scope of this tutorial, we'll simply use this powerful tool in the creation
+of our supply chain.
 
 # Install boilerplate files
 
-//TODO
+This isn't a tutorial on kpack
+([you can find that here](https://github.com/pivotal/kpack/blob/main/docs/tutorial.md))
+so we've done some setup for you, including creating an object that points to an
+image registry where your OCI image will be created, creating a service account
+for kpack, etc. Those objects are defined in
+`kpack-setup/kpack-boilerplate.yaml`{{open}}. We encourage you to trust in
+those objects and focus on the kpack Image object that we'll be creating next.
 
 # Define the object
 
