@@ -4,22 +4,9 @@ You'll use a GitRepository to expose your source code in the cluster.
 
 # Define the object
 
-First let's create a file defining our object.
+First let's open the file defining our GitRepository object.
 
-<pre class="file" data-filename="manual-git-repo.yaml" data-target="replace">
-apiVersion: source.toolkit.fluxcd.io/v1beta1
-kind: GitRepository
-metadata:
-  name: manual-git-repo
-spec:
-  gitImplementation: libgit2
-  ignore: ""
-  interval: 1m0s
-  timeout: 20s
-  ref:
-    branch: #TODO-set-branch
-  url: #TODO-set-repo-url
-</pre>
+`manual-git-repo.yaml`{{open}}
 
 We'll replace the `TODO-set-branch` and `TODO-set-repo-url` with the values
 discussed on the last page.

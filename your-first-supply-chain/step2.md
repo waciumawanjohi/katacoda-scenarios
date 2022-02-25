@@ -10,15 +10,18 @@ of our supply chain.
 
 This isn't a tutorial on kpack
 ([you can find that here](https://github.com/pivotal/kpack/blob/main/docs/tutorial.md))
-so we've done some setup for you, including creating an object that points to an
-image registry where your OCI image will be created, creating a service account
-for kpack, etc. Those objects are defined in
-`kpack-setup/kpack-boilerplate.yaml`{{open}}. We encourage you to trust in
-those objects and focus on the kpack Image object that we'll be creating next.
+so we've done some setup for you, including writing an object that points to an
+image registry where your OCI image will be created, writing a service account
+for kpack, etc. Those objects are defined in the files in `kpack-setup`
+which we'll apply now:
+`kubectl apply -f kpack-setup/`{{execute}}
+
+Feel free to inspect the objects just created, but we encourage you to trust
+in them and focus on the kpack Image object that we'll be creating next.
 
 # Define the object
 
-Let's create a file defining our object.
+Let's create a file defining our kpack image.
 
 <pre class="file" data-filename="manual-git-repo.yaml" data-target="replace">
 apiVersion: source.toolkit.fluxcd.io/v1beta1

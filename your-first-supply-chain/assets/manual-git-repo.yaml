@@ -1,0 +1,13 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: manual-git-repo
+spec:
+  gitImplementation: libgit2
+  ignore: ""
+  interval: 1m0s
+  timeout: 20s
+  ref:
+    branch: #TODO-set-branch
+  url: #TODO-set-repo-url
