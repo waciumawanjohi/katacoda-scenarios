@@ -1,5 +1,5 @@
 {
-  "title": "Your First Cartographer Supply Chain: rev 2",
+  "title": "Your First Cartographer Supply Chain: rev 3",
   "description": "Create a path to production for multiple apps",
   "difficulty": "Beginner",
   "time": "10 minutes",
@@ -33,6 +33,12 @@
     },
     "finish": {
       "text": "finish.md"
+    },
+    "assets": {
+      "host01": [
+        {"file": "kpack-boilerplate.yaml", "target": "/root/kpack-setup/"},
+        {"file": "ip.py", "target": "/root/kpack-setup/", "chmod": "+x"}
+      ]
     }
   },
   "environment": {

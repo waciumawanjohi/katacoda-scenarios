@@ -3,7 +3,7 @@
 You are sharp enough to write imperative code that will take your source code
 and turn it into a live app running on a server. And as a kubernetes user,
 you're sharp enough to see the value in transitioning from imperative code
-to declarative configuration. In the following 3 pages, we'll use specialized
+to declarative configuration. In the following few pages, we'll use specialized
 tools to do each step of the process to deploy our code.
 
 We will use 3 kubernetes resources (you don't need any prior experience with
