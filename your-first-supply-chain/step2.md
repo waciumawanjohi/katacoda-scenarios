@@ -23,49 +23,56 @@ in them and focus on the kpack Image object that we'll be creating next.
 
 Let's create a file defining our kpack image.
 
-<pre class="file" data-filename="manual-git-repo.yaml" data-target="replace">
-apiVersion: source.toolkit.fluxcd.io/v1beta1
-kind: GitRepository
-metadata:
-  name: manual-git-repo
-spec:
-  gitImplementation: libgit2
-  ignore: ""
-  interval: 1m0s
-  timeout: 20s
-  ref:
-    branch: #TODO-set-branch
-  url: #TODO-set-repo-url
-</pre>
+`manual-image.yaml`{{open}}
 
-Now let's choose an app to deploy. We want to use code that will behave well with our build step, so I recommend that
-you copy one of the dozens of example apps from the [Cloud Native Buildpacks examples](https://github.com/paketo-buildpacks/samples).
+As with the GitRepository object, there are values that we can predefine,
+that will work for a wide array of apps. And there are some values that must
+be specialized for your app.
 
-We'll replace the `TODO-set-branch` and `TODO-set-repo-url` with the appropriate values. Feel free to copy in the values below.
+The first thing that we'll do is specify the tag for the image that will be
+created.
 
-<pre class="file" data-filename="manual-git-repo.yaml" data-target="insert"  data-marker="#TODO-set-branch">
-main
-</pre>
+<pre class="file" data-filename="manual-image.yaml" data-target="append">
+  tag: 0.0.0.0:5000/your-app</pre>
 
-<pre class="file" data-filename="manual-git-repo.yaml" data-target="insert"  data-marker="#TODO-set-repo-url">
-https://github.com/kontinue/hello-world
-</pre>
+We're running a local image registry (where your OCI image will be stored)
+and we need to get that address now. Run the following command to find the
+ip address:
+
+`cartographer/hack/ip.py`{{execute}}
+
+And replace the `0.0.0.0` in the images `tag` field with the ip address just
+revealed.
+
+(You may also change the `your-app` name to a name of your choosing)
+
+Great! Now we need to tell this kpack Image object where to find your source
+code. This is the value from the status of the GitRepository object you
+created before. Add the following fields to the kpack Image:
+
+<pre class="file" data-filename="manual-image.yaml" data-target="append">
+  source:
+    blob:
+      url: </pre>
+
+add in the url field, paste in the source code location from the
+GitRepository object.
 
 ### Apply the object
 
-Let's create the object in the repo:
+We're ready; create the object in the repo!
 
-`kubectl apply -f example/manual-git-repo.yaml`{{execute}}
+`kubectl apply -f example/manual-image.yaml`{{execute}}
 
 ### Observe the object
 
-The controller for the GitRepository resource is now reconciling the object. We want to get the status of the object
-once that reconciliation is done.
+The kpack controller is now reconciling the object. We want to get the
+status of the object once that reconciliation is done.
 
-`kubectl get gitrepository manual-git-repo -o yaml`{{execute}}
+`kubectl get image.kpack.io manual-image -o yaml`{{execute}}
 
-Once we observe that the status includes the following, we'll know that the controller has completed its work.
-If you don't see a status on the object, wait a few moments and rerun the kubectl get:
+Building the image may take a minute. Once we observe that the status includes
+the following, we'll know that the controller has completed its work.
 
 ```yaml
   conditions:
@@ -76,9 +83,11 @@ If you don't see a status on the object, wait a few moments and rerun the kubect
       type: Ready
 ```
 
-The gitrepository is now exposing the most recent code on the specified branch to any resource in the cluster.
-Execute the following command to get the value. Copy the value, we'll use it in just a moment:
+The kpack Image is now exposing the location of the OCI image. We can see
+that location on the object's `.status.latestImage` field. As before, we'll
+copy this value and use it with our next kubernetes object. You can execute
+the following command:
 
-`kubectl get gitrepository manual-git-repo -o yaml | yq .status.artifact.url`{{execute}}
+`kubectl get image.kpack.io manual-image -o yaml | yq .status.latestImage`{{execute}}
 
-Now we're ready for another kubernetes tool to turn this code into an OCI image!
+Now let's create a deployment that uses this image!
