@@ -8,6 +8,7 @@ main () {
     install_kapp
     install_yq
     launch.sh
+    install_controllers
 }
 
 install_ytt () {
