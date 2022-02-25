@@ -2,7 +2,7 @@
 
 Now the your source code is available in your cluster (at that path that you copied in the last step) we can
 use the cloud native buildpacks to create an image. A full run down of cloud native buildpacks and kpack is
-outside the scope of this tutorial, we'll simply use this powerful tool in the creation of our supply chain. 
+outside the scope of this tutorial, we'll simply use this powerful tool in the creation of our supply chain.
 
 # Install boilerplate files
 
