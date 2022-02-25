@@ -2,7 +2,7 @@
 
 main () {
     launch.sh
-    start_registry
+#    start_registry
     ./root/kpack-setup/ip.py
 }
 
