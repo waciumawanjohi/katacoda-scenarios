@@ -1,0 +1,21 @@
+---
+apiVersion: kpack.io/v1alpha2
+kind: Image
+metadata:
+  name: manual-image
+spec:
+  build:
+    env:
+      - name: CGO_ENABLED
+        value: "0"
+    resources: {}
+  builder:
+    kind: ClusterBuilder
+    name: my-builder
+  cache:
+    volume:
+      size: 2G
+  failedBuildHistoryLimit: 10
+  successBuildHistoryLimit: 10
+  imageTaggingStrategy: BuildNumber
+  serviceAccountName: cartographer-example-registry-creds-sa

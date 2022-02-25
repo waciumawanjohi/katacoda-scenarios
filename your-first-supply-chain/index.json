@@ -1,5 +1,5 @@
 {
-  "title": "Your First Cartographer Supply Chain: rev 1",
+  "title": "Your First Cartographer Supply Chain: rev 2",
   "description": "Create a path to production for multiple apps",
   "difficulty": "Beginner",
   "time": "10 minutes",
@@ -37,7 +37,8 @@
     "assets": {
       "host01": [
         {"file": "kpack-boilerplate.yaml", "target": "/root/kpack-setup/"},
-        {"file": "manual-git-repo.yaml", "target": "/root/example/"}
+        {"file": "manual-git-repo.yaml", "target": "/root/example/"},
+        {"file": "manual-image.yaml", "target": "/root/example/"}
       ]
     }
   },
