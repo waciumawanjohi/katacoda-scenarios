@@ -1,7 +1,6 @@
 #/bin/bash
 
 main() {
-    launch.sh
     install_kind
     install_controllers
     create-secret

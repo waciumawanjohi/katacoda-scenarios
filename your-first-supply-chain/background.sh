@@ -7,7 +7,6 @@ main () {
     install_ytt
     install_kapp
     install_yq
-    launch.sh
 }
 
 install_ytt () {
