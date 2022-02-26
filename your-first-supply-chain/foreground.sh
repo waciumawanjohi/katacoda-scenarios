@@ -2,9 +2,8 @@
 
 main() {
     launch.sh
-#    install_controllers
-#    create-secret
-    kapp deploy --yes -a kpack -f https://github.com/pivotal/kpack/releases/download/v0.5.0/release-0.5.0.yaml
+    install_controllers
+    create-secret
 }
 
 install_controllers() {
