@@ -33,7 +33,7 @@ The first thing that we'll do is specify the tag for the image that will be
 created.
 
 <pre class="file" data-filename="manual-image.yaml" data-target="append">
-  tag: 0.0.0.0:5000/your-app</pre>
+  tag: 0.0.0.0:5000/your-app-</pre>
 
 We're running a local image registry (where your OCI image will be stored)
 and we need to get that address now. Run the following command to find the
