@@ -1,9 +1,14 @@
 #/bin/bash
 
 main() {
+    install_kubectl
     install_kind
     install_controllers
     create-secret
+}
+
+install_kubectl() {
+    snap install kubectl --classic
 }
 
 install_kind() {
