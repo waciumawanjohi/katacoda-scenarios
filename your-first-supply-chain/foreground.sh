@@ -2,15 +2,20 @@
 
 main() {
     launch.sh
+    install_kind
     install_controllers
     create-secret
+}
+
+install_kind() {
+    GO111MODULE="on" go get sigs.k8s.io/kind@v0.11.1
 }
 
 install_controllers() {
     git clone https://github.com/vmware-tanzu/cartographer.git
     pushd cartographer
         git checkout waciuma/katacoda
-        ./hack/setup.sh cluster katacoda-scenario-1
+        ./hack/setup.sh katacoda-scenario-1
     popd
 }
 
