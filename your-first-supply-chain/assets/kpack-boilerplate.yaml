@@ -38,7 +38,7 @@ spec:
   serviceAccountRef:
     name: cartographer-example-registry-creds-sa
     namespace: default
-  tag: 10.138.0.2:5000/example-basic-sc-go-builder
+  tag: 10.138.0.2:5000/example-basic-sc-go-builder #TODO-replace-this-ip-address
   stack:
     name: base
     kind: ClusterStack
