@@ -11,13 +11,13 @@ main () {
 }
 
 install_ytt () {
-    wget -O- https://carvel.dev/install.sh > install_ytt.sh
+    wget --no-check-certificate -O- https://carvel.dev/install.sh > install_ytt.sh #TODO remove certificate flag when katacoda k8s env supports cert checking
     sudo bash install_ytt.sh
     rm install_ytt.sh
 }
 
 install_kapp() {
-    wget -O- https://carvel.dev/install.sh > install_kapp.sh
+    wget --no-check-certificate -O- https://carvel.dev/install.sh > install_kapp.sh #TODO remove certificate flag when katacoda k8s env supports cert checking
     sudo bash install_kapp.sh
     rm install_kapp.sh
 }
