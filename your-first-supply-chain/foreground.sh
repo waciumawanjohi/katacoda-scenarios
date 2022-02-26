@@ -10,7 +10,7 @@ install_controllers() {
     git clone https://github.com/vmware-tanzu/cartographer.git
     pushd cartographer
         git checkout waciuma/katacoda
-        ./hack/setup.sh katacoda-scenario-1
+        ./hack/setup.sh cluster katacoda-scenario-1
     popd
 }
 
