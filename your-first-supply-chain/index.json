@@ -1,5 +1,5 @@
 {
-  "title": "Your First Cartographer Supply Chain: rev 3",
+  "title": "Your First Cartographer Supply Chain: rev 4",
   "description": "Create a path to production for multiple apps",
   "difficulty": "Beginner",
   "time": "10 minutes",
@@ -47,6 +47,6 @@
     "uieditorpath": "/root/example"
   },
   "backend": {
-    "imageid": "ubuntu:2004"
+    "imageid": "ubuntu:1804"
   }
 }
