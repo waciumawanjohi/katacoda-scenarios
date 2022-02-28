@@ -4,7 +4,8 @@ main() {
     install_kubectl
     install_kind
     install_controllers
-    create-kpack-files
+    create_kpack_files
+    timestamp_stop
 }
 
 install_kubectl() {
@@ -23,7 +24,7 @@ install_controllers() {
     popd
 }
 
-create-kpack-files() {
+create_kpack_files() {
     pushd cartographer/hack
         readonly HOST_ADDR=$(./ip.py)
         readonly REGISTRY="${HOST_ADDR}:5000"
@@ -40,6 +41,10 @@ create-kpack-files() {
         -f "template-with-ytt/kpack-builder.yaml" \
         --data-value registry.server="$REGISTRY" \
         --output-files kpack-setup
+}
+
+timestamp_stop() {
+    date +"%s" > stop
 }
 
 main

@@ -4,9 +4,14 @@ readonly KPACK_VERSION=0.5.1
 readonly SOURCE_CONTROLLER_VERSION=0.17.0
 
 main () {
+    timestamp_start
     install_ytt
     install_kapp
     install_yq
+}
+
+timestamp_start() {
+    date +"%s" > start
 }
 
 install_ytt () {
