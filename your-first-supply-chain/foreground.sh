@@ -4,7 +4,7 @@ main() {
     install_kubectl
     install_kind
     install_controllers
-    create-secret
+    create-kpack-files
 }
 
 install_kubectl() {
@@ -23,7 +23,7 @@ install_controllers() {
     popd
 }
 
-create-secret() {
+create-kpack-files() {
     pushd cartographer/hack
         readonly HOST_ADDR=$(./ip.py)
         readonly REGISTRY="${HOST_ADDR}:5000"
@@ -34,6 +34,11 @@ create-secret() {
         --data-value registry.server="$REGISTRY" \
         --data-value registry.username=admin \
         --data-value registry.password=admin \
+        --output-files kpack-setup
+
+    ytt --ignore-unknown-comments \
+        -f "template-with-ytt/kpack-builder.yaml" \
+        --data-value registry.server="$REGISTRY" \
         --output-files kpack-setup
 }
 

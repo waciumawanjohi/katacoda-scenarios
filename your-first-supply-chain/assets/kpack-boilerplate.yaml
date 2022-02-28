@@ -29,24 +29,3 @@ spec:
     image: "paketobuildpacks/build:base-cnb"
   runImage:
     image: "paketobuildpacks/run:base-cnb"
----
-apiVersion: kpack.io/v1alpha2
-kind: ClusterBuilder
-metadata:
-  name: my-builder
-spec:
-  serviceAccountRef:
-    name: cartographer-example-registry-creds-sa
-    namespace: default
-  tag: 10.138.0.2:5000/example-basic-sc-go-builder #TODO-replace-this-ip-address
-  stack:
-    name: base
-    kind: ClusterStack
-  store:
-    name: default
-    kind: ClusterStore
-  order:
-    - group:
-        - id: paketo-buildpacks/java
-    - group:
-        - id: paketo-buildpacks/go

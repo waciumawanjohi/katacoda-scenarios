@@ -38,7 +38,8 @@
       "host01": [
         {"file": "kpack-boilerplate.yaml", "target": "/root/kpack-setup/"},
         {"file": "manual-git-repo.yaml", "target": "/root/example/"},
-        {"file": "manual-image.yaml", "target": "/root/example/"}
+        {"file": "manual-image.yaml", "target": "/root/example/"},
+        {"file": "kpack-builder.yaml", "target": "/root/template-with-ytt/"}
       ]
     }
   },
